@@ -54,26 +54,21 @@
 
 				case 'show_by_id':
 					$id = $params['id'];
-					$url = self::apiUrl.'data/series/'.$id.'/';
-
+					$url = self::apiUrl.'showinfo.php?sid='.$id;
 					$data = self::fetchData($url);
 					return $data;
 				break;
 
-				case 'get_episode':
-					$season = $params['season'];
-					$episode = $params['episode'];
+				case 'get_episodes':
 					$showId = $params['show_id'];
-					$url = self::apiUrl.'/series/'.$showId.'/default/'.$season.'/'.$episode;
-
+					$url = self::apiUrl.'episode_list.php?sid='.$showId;
 					$data = self::fetchData($url);
 					return $data;
 				break;
 
 				case 'search_tv_shows':
 					$showName = urlencode($params['show_name']);
-					$url = self::apiUrl."/GetSeries.php?seriesname=$showName";
-
+					$url = self::apiUrl."search.php?show=$showName";
 					$data = self::fetchData($url);
 					return $data;
 				break;
