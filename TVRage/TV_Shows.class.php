@@ -7,7 +7,7 @@
 	 * @author Ryan Doherty <ryan@ryandoherty.com>
 	 */
 
-	class TV_Shows extends TVDB {
+	class TV_Shows extends TVRage {
 
 		/**
 		 * Searches for tv shows based on show name
@@ -18,14 +18,14 @@
 		 **/
 		public static function search($showName) {
 			$params = array('action' => 'search_tv_shows', 'show_name' => $showName);
-			$data = self::request($params);
+			$data = TVRage::request($params);
 
 			if($data) {
 				$xml = simplexml_load_string($data);
 				$shows = array();
-				foreach($xml->Series as $show) {
-					$shows[] = self::findById((string)$show->seriesid);
-				}
+				foreach($xml->show as $show) {
+					$shows[] = new TV_Show($show);
+                }
 
 				return $shows;
 			}

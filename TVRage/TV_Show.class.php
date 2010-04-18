@@ -9,12 +9,12 @@
 	class TV_Show extends TVRage {
 
 		/**
-		 * TVRage show id
+		 * TVRage showid
 		 *
 		 * @access public
 		 * @var integer|string
 		 */
-		public $id;
+		public $showId;
 
 		/**
 		 * Name of the TV show
@@ -22,23 +22,63 @@
 		 * @access public
 		 * @var string
 		 */
-		public $seriesName;
+		public $name;
 
-		/**
-		 * Current status of the TV Show. Values are 'Ended', 'Continuing' (other unknown values possible)
-		 *
-		 * @access public
-		 * @var string
-		 */
-		public $status;
+        /**
+         * URL to TVRage website for show
+         *
+         * @access public
+         * @var string
+         */
+        public $link;
 
-		/**
-		 * First air date
-		 *
-		 * @access public
-		 * @var int Time in seconds since the epoc
-		 */
-		public $firstAired;
+        /**
+         * Country
+         * 
+         * @access public
+         * @var string
+         */
+        public $country;
+
+        /**
+         * Started date
+         *
+         * @access public
+         * @var int
+         */
+        public $started;
+
+        /**
+         * Ended date
+         *
+         * @access public
+         * @var int
+         */
+        public $ended;
+        
+        /**
+         * Number of seasons 
+         *
+         * @access public
+         * @var int
+         */
+        public $seasons;
+
+        /**
+         * Status of show 
+         *
+         * @access public
+         * @var string 
+         */
+        public $status;
+        
+        /**
+         * Show classification
+         *
+         * @access public
+         * @var string
+         */
+        public $classification;
 
 		/**
 		 * TV Network the show is on
@@ -65,28 +105,12 @@
 		public $genres;
 
 		/**
-		 * Array of actor names
-		 *
-		 * @access public
-		 * @var array contains array of actors (strings)
-		 */
-		public $actors;
-
-		/**
-		 * Overview of the TV Show
-		 *
-		 * @access public
-		 * @var string
-		 */
-		public $overview;
-
-		/**
 		 * Day of the week the TV show airs (Sunday, Monday, ...)
 		 *
 		 * @access public
 		 * @var string
 		 */
-		public $dayOfWeek;
+		public $airDay;
 
 		/**
 		 * Time the tv show airs
@@ -97,53 +121,33 @@
 		public $airTime;
 
 		/**
-		 * Rating of the tv show
-		 *
-		 * @access public
-		 * @var string
-		 */
-		public $rating;
-
-		/**
-		 * IMDB's id for the tv show (http://imdb.com/title/$imdbId)
-		 *
-		 * @access public
-		 * @var string
-		 */
-		public $imdbId;
-
-		/**
-		 * Zap2It's id for the tv show (not sure how it is used yet)
-		 *
-		 * @access public
-		 * @var string
-		 */
-		public $zap2ItId;
-
-
-		/**
 		 * Constructor
 		 *
 		 * @access public
-		 * @param SimpleXMLObject $config A simplexmlobject created from thetvdb.com's xml data for the tv show
+		 * @param SimpleXMLObject $config A simplexmlobject created from tvrage.com's xml data for the tv show
 		 * @return void
 		 **/
 		function __construct($config) {
 
-			$this->id = (string)$config->id;
-			$this->seriesName = (string)$config->SeriesName;
-			$this->status = (string)$config->Status;
-			$this->firstAired = strtotime((string)$config->FirstAired);
-			$this->network = (string)$config->Network;
-			$this->runtime = (string)$config->Runtime;
-			$this->genres = $this->removeEmptyIndexes(explode('|', (string)$config->Genre));
-			$this->actors = $this->removeEmptyIndexes(explode('|', (string)$config->Actors));
-			$this->overview = (string)$config->Overview;
-			$this->dayOfWeek = (string)$config->Airs_DayOfWeek;
-			$this->airTime = (string)$config->Airs_Time;
-			$this->rating = (string)$config->Rating;
-			$this->imdbId = (string)$config->IMDB_ID;
-			$this->zap2ItId = (string)$config->zap2it_id;
+			$this->showId = (string)$config->showid;
+			$this->name = (string)$config->name;
+            $this->link = (string)$config->link;
+            $this->country = (string)$config->country;
+            $this->started = strtotime(str_replace('/', ' ', (string)$config->started));
+            $this->ended = strtotime(str_replace('/', ' ', (string)$config->ended));
+            $this->seasons = (string)$config->seasons;
+			$this->status = (string)$config->status;
+			$this->network = (string)$config->network;
+			$this->runtime = (string)$config->runtime;
+            $this->classification = (string)$config->classification;
+			$this->genres = array();
+            
+            foreach($config->genres->genre as $genre) {
+                    $this->genres[] = (string)$genre;       
+            }
+       
+            $this->airTime = (string)$config->airtime; 
+            $this->airDay = (string)$config->airday;
 		}
 
 

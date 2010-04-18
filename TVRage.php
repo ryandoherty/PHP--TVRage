@@ -4,7 +4,7 @@
 	 *
 	 * @author Ryan Doherty <ryan@ryandoherty.com>
 	 * @version 1.0
-	 * @copyright Ryan Doherty, 16 February, 2008
+	 * @copyright Ryan Doherty, 17 April, 2010
 	 * @package PHP::TVRAGE
 	 **/
 

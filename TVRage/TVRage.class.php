@@ -21,7 +21,7 @@
 		 * @param $url string The url to fetch data from
 		 * @return string The data
 		 **/
-		protected function fetchData($url) {
+		static function fetchData($url) {
 			$ch = curl_init($url);
 			curl_setopt($ch, CURLOPT_HEADER, 1);
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
@@ -48,7 +48,7 @@
 		 * @param $params An array containing parameters for the request to thetvdb.com
 		 * @return string The data from thetvdb.com
 		 **/
-		protected function request($params) {
+		static function request($params) {
 
 			switch($params['action']) {
 
@@ -59,16 +59,18 @@
 					return $data;
 				break;
 
-				case 'get_episodes':
+				case 'get_episode':
 					$showId = $params['show_id'];
-					$url = self::apiUrl.'episode_list.php?sid='.$showId;
+                    $season = $params['season'];
+                    $episode = $params['episode'];
+					$url = self::apiUrl.'episodeinfo.php?sid='.$showId.'&ep='.$season.'x'.$episode;
 					$data = self::fetchData($url);
 					return $data;
 				break;
 
 				case 'search_tv_shows':
 					$showName = urlencode($params['show_name']);
-					$url = self::apiUrl."search.php?show=$showName";
+					$url = self::apiUrl."full_search.php?show=$showName";
 					$data = self::fetchData($url);
 					return $data;
 				break;
