@@ -42,7 +42,7 @@
 
 			if ($data) {
 				$xml = simplexml_load_string($data);
-				$show = new TV_Show($xml->Series);
+				$show = new TV_Show($xml);
 				return $show;
 			} else {
 				return false;

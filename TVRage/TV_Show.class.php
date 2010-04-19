@@ -34,7 +34,7 @@
 
         /**
          * Country
-         * 
+         *
          * @access public
          * @var string
          */
@@ -55,9 +55,9 @@
          * @var int
          */
         public $ended;
-        
+
         /**
-         * Number of seasons 
+         * Number of seasons
          *
          * @access public
          * @var int
@@ -65,13 +65,13 @@
         public $seasons;
 
         /**
-         * Status of show 
+         * Status of show
          *
          * @access public
-         * @var string 
+         * @var string
          */
         public $status;
-        
+
         /**
          * Show classification
          *
@@ -141,12 +141,12 @@
 			$this->runtime = (string)$config->runtime;
             $this->classification = (string)$config->classification;
 			$this->genres = array();
-            
+
             foreach($config->genres->genre as $genre) {
-                    $this->genres[] = (string)$genre;       
+                    $this->genres[] = (string)$genre;
             }
-       
-            $this->airTime = (string)$config->airtime; 
+
+            $this->airTime = (string)$config->airtime;
             $this->airDay = (string)$config->airday;
 		}
 
@@ -162,13 +162,13 @@
 			$params = array('action' => 'get_episode',
 							'season' => (int)$season,
 							'episode' => (int)$episode,
-							'show_id' => $this->id);
+							'show_id' => $this->showId);
 
-			$data = self::request($params);
+			$data = TVRage::request($params);
 
 			if ($data) {
 				$xml = simplexml_load_string($data);
-				return new TV_Episode($xml->Episode);
+				return new TV_Episode($xml->episode);
 			} else {
 				return false;
 			}

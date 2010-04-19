@@ -45,8 +45,8 @@
 		 * Fetches data from TVRage api based on action
 		 *
 		 * @access protected
-		 * @param $params An array containing parameters for the request to thetvdb.com
-		 * @return string The data from thetvdb.com
+		 * @param $params An array containing parameters for the request to tvrage.com
+		 * @return string The data from tvrage.com
 		 **/
 		static function request($params) {
 
@@ -60,6 +60,7 @@
 				break;
 
 				case 'get_episode':
+                    print_r($params);
 					$showId = $params['show_id'];
                     $season = $params['season'];
                     $episode = $params['episode'];
