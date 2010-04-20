@@ -15,8 +15,7 @@
 		 * @var integer|string
 		 */
 		public $showId;
-
-		/**
+/**
 		 * Name of the TV show
 		 *
 		 * @access public
@@ -30,7 +29,7 @@
          * @access public
          * @var string
          */
-        public $link;
+        public $showLink;
 
         /**
          * Country
@@ -130,9 +129,9 @@
 		function __construct($config) {
 
 			$this->showId = (string)$config->showid;
-			$this->name = (string)$config->name;
-            $this->link = (string)$config->link;
-            $this->country = (string)$config->country;
+			$this->name = (string)$config->showname;
+            $this->showLink = (string)$config->showlink;
+            $this->country = (string)$config->origin_country;
             $this->started = strtotime(str_replace('/', ' ', (string)$config->started));
             $this->ended = strtotime(str_replace('/', ' ', (string)$config->ended));
             $this->seasons = (string)$config->seasons;

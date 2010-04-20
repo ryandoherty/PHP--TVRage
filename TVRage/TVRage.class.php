@@ -60,7 +60,6 @@
 				break;
 
 				case 'get_episode':
-                    print_r($params);
 					$showId = $params['show_id'];
                     $season = $params['season'];
                     $episode = $params['episode'];
@@ -80,27 +79,6 @@
 					return false;
 				break;
 			}
-		}
-
-
-		/**
-		 * Removes indexes from an array if they are zero length after trimming
-		 *
-		 * @param array $array The array to remove empty indexes from
-		 * @return array An array with all empty indexes removed
-		 **/
-		public function removeEmptyIndexes($array) {
-
-			$length = count($array);
-
-			for ($i=$length-1; $i >= 0; $i--) {
-				if(trim($array[$i]) == ''){
-					unset($array[$i]);
-				}
-			}
-
-			sort($array);
-			return $array;
 		}
 	}
 ?>
