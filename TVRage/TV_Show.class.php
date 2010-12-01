@@ -132,7 +132,13 @@
 			$this->name = (string)$config->showname;
             $this->showLink = (string)$config->showlink;
             $this->country = (string)$config->origin_country;
-            $this->started = strtotime(str_replace('/', ' ', (string)$config->started));
+
+            if(isset($config->startdate)) {
+                $this->started = strtotime(str_replace('/', ' ', (string)$config->startdate));
+            } else {
+                $this->started = strtotime(str_replace('/', ' ', (string)$config->started));
+            }
+
             $this->ended = strtotime(str_replace('/', ' ', (string)$config->ended));
             $this->seasons = (string)$config->seasons;
 			$this->status = (string)$config->status;
