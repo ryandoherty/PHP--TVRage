@@ -129,9 +129,9 @@
 		function __construct($config) {
 
 			$this->showId = (string)$config->showid;
-			$this->name = (string)$config->showname;
-            $this->showLink = (string)$config->showlink;
-            $this->country = (string)$config->origin_country;
+			$this->name = isset($config->showname) ? (string)$config->showname : (string)$config->name;
+            $this->showLink = isset($config->showlink) ? (string)$config->showlink : (string)$config->link;
+            $this->country = isset($config->origin_country) ? (string)$config->origin_country : (string)$config->country;
 
             if(isset($config->startdate)) {
                 $this->started = strtotime(str_replace('/', ' ', (string)$config->startdate));
