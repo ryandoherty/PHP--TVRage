@@ -4,14 +4,13 @@ Welcome to PHP::TVRage
 
 ### Example:
 <pre><code>
-<?php
      include('TVRage.php');
 
      $show = TV_Shows::findById('2930');
      print_r($show);
      $episode = $show->getEpisode(1,2);
      print_r($episode);
-?>
+
 </code></pre>
 
 ### Gives you:
@@ -54,9 +53,7 @@ TV_Episode Object
 </code></pre>
 
 ### You can also search for TV shows:
-<pre><code>
-<?php
-    $shows = TV_Shows::search("90210");
-    //returns an array of TV_Show objects with 90210 in their title
-?>
-</code></pre>
+<pre>
+          $shows = TV_Shows::search("90210");
+          //returns an array of TV_Show objects with 90210 in their title
+</pre>
