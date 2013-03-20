@@ -38,7 +38,6 @@ TV_Show Object
             [4] => Mystery
             [5] => Sci-Fi
         )
-
     [airDay] => Tuesday
     [airTime] => 20:00
     [twelveHourAirTime] => 8:00 pm
