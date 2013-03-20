@@ -16,7 +16,6 @@ Welcome to PHP::TVRage
 
 ### Gives you:
 ```php
-<?php
 TV_Show Object
 (
     [showId] => 2930
@@ -52,7 +51,6 @@ TV_Episode Object
     [airDate] => 857980800
     [url] => http://www.tvrage.com/Buffy_The_Vampire_Slayer/episodes/28078
 )
-?>
 ```
 
 ### You can also search for TV shows:
