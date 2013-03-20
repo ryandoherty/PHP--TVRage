@@ -1,6 +1,9 @@
-Welcome to PHP::TVRage, a PHP library for accessing tv show info from tvrage.com
+Welcome to PHP::TVRage 
+----------------------
+### a PHP library for accessing tv show info from tvrage.com
 
-Example:
+### Example:
+<code>
 <?php
      include('TVRage.php');
 
@@ -9,9 +12,10 @@ Example:
      $episode = $show->getEpisode(1,2);
      print_r($episode);
 ?>
+</code>
 
-Gives you:
-
+### Gives you:
+<code>
 TV_Show Object
 (
     [showId] => 2930
@@ -47,11 +51,13 @@ TV_Episode Object
     [airDate] => 857980800
     [url] => http://www.tvrage.com/Buffy_The_Vampire_Slayer/episodes/28078
 )
+</code>
 
-You can also search for TV shows:
-
+### You can also search for TV shows:
+<code>
 <?php
     $shows = TV_Shows::search("90210");
     //returns an array of TV_Show objects with 90210 in their title
 ?>
+</code>
 
