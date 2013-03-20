@@ -37,6 +37,7 @@ TV_Show Object
 
     [airDay] => Tuesday
     [airTime] => 20:00
+    [twelveHourAirTime] => 8:00 pm
 )
 TV_Episode Object
 (
