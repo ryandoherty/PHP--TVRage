@@ -56,7 +56,7 @@
 		 * @param simplexmlobject $config simplexmlobject created from tvrage.com's xml data for the tv episode
 		 **/
 		function __construct($config) {
-			list($this->season, $this->number) = explode('x', (string)$config->number);
+			list($this->season, $this->number) = array_pad(explode('x', (string)$config->number, 2), 2, null);
             $this->season = (int)$this->season;
             $this->number = (int)$this->number;
 			$this->airDate = strtotime((string)$config->airdate);
