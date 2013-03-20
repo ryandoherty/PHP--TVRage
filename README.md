@@ -54,10 +54,9 @@ TV_Episode Object
 </code></pre>
 
 ### You can also search for TV shows:
-<code>
+<pre><code>
 <?php
     $shows = TV_Shows::search("90210");
     //returns an array of TV_Show objects with 90210 in their title
 ?>
-</code>
-
+</code></pre>
