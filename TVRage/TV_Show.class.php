@@ -120,6 +120,14 @@
 		public $airTime;
 
 		/**
+		 * Time the tv show airs in 12 hour time
+		 *
+		 * @access public
+		 * @var string
+		 */
+		public $twelveHourAirTime;
+
+		/**
 		 * Constructor
 		 *
 		 * @access public
@@ -152,6 +160,7 @@
             }
 
             $this->airTime = (string)$config->airtime;
+            $this->twelveHourAirTime = (string)DATE("g:i a", STRTOTIME($config->airtime));
             $this->airDay = (string)$config->airday;
 		}
 
