@@ -49,6 +49,7 @@ TV_Episode Object
     [number] => 2
     [title] => The Harvest (2)
     [airDate] => 857980800
+    [formattedAirDate] => Mon, March 10, 1997
     [url] => http://www.tvrage.com/Buffy_The_Vampire_Slayer/episodes/28078
 )
 ```
