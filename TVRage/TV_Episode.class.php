@@ -5,7 +5,7 @@
 	 *
 	 * @package PHP::TVRage
 	 * @author Ryan Doherty <ryan@ryandoherty.com>
-	 * edited by Kevin Kirsche <kev.kirsche@gmail.com>
+	 * @author Kevin Kirsche <kev.kirsche@gmail.com>
 	 **/
 	class TV_Episode extends TVRage {
 
