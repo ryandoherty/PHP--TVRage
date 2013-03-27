@@ -160,7 +160,7 @@
             }
 
             $this->airTime = (string)$config->airtime;
-            $this->twelveHourAirTime = (string)DATE("g:i a", STRTOTIME($config->airtime));
+            $this->twelveHourAirTime = (string)date("g:i a", strtotime($config->airtime));
             $this->airDay = (string)$config->airday;
 		}
 
