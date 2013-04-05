@@ -5,6 +5,7 @@
 	 *
 	 * @package PHP::TVRage
 	 * @author Ryan Doherty <ryan@ryandoherty.com>
+	 * @author Kevin Kirsche <kev.kirsche@gmail.com>
 	 **/
 	class TV_Episode extends TVRage {
 
@@ -40,6 +41,14 @@
 		 */
 		public $airDate;
 
+		/**
+		 * First air date of the episode formatted to "Day, Month Number, Year"
+		 *
+		 * @access public
+		 * @var int
+		 */
+		public $formattedAirDate;
+
         /**
          * URL to episode on TVrage.com
          *
@@ -56,10 +65,11 @@
 		 * @param simplexmlobject $config simplexmlobject created from tvrage.com's xml data for the tv episode
 		 **/
 		function __construct($config) {
-			list($this->season, $this->number) = explode('x', (string)$config->number);
+			list($this->season, $this->number) = array_pad(explode('x', (string)$config->number, 2), 2, null);
             $this->season = (int)$this->season;
             $this->number = (int)$this->number;
 			$this->airDate = strtotime((string)$config->airdate);
+			$this->formattedAirDate = date("D, F d, Y", strtotime((string)$config->airdate));
 			$this->title = (string)$config->title;
             $this->url = (string)$config->url;
 		}
